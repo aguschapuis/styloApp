@@ -10,6 +10,7 @@ import {
   StatusBar,
   TextInput,
   Button,
+  Platform,
 } from "react-native";
 
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -18,38 +19,22 @@ import { colors } from "../themes/Colors";
 
 export const AddStock = () => {
   const [filtredList, setFiltredList] = useState(stockData.ingresos);
-  const [pickedDate, setPickedDate] = useState(null);
+  const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
-  const getCustomInputValue = (value) => {
-    if (!value) {
-      return "Default";
-    }
-    return value.includes(new Date().getFullYear() + 1) ? "Next Year" : value;
-  };
 
-  const renderCustomInput = (props, toggle) => {
-    const { value } = props;
-    return (
-      <TouchableOpacity
-        flex
-        row
-        spread
-        onPress={() => {
-          toggle(true);
-        }}
-      >
-        <Text>Valid from</Text>
-        <Text style={{ color: colors.green }}>
-          {getCustomInputValue(value)}
-        </Text>
-      </TouchableOpacity>
-    );
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setDate(currentDate);
+    // const updateData = stockData.ingresos.filter((product) => {
+    //   return Object.keys(product)[0] === date.getTime();
+    // });
+    // setFiltredList(updateData);
   };
 
   const getItem = (data: Object[], index: number) => {
     return {
-      date: Object.keys(data[index])[0],
-      quantity: Object.values(data[index])[0],
+      id: Object.keys(data[index])[0],
+      date: Object.values(data[index])[0].date,
     };
   };
   const getItemCount = (data: Object[]) => data.length;
@@ -59,30 +44,56 @@ export const AddStock = () => {
       <Text>{date}</Text>
     </TouchableOpacity>
   );
+  console.log(date.toString());
 
   return (
     <SafeAreaView style={styles.stockView}>
       <View style={styles.iconView}>
         <FontAwesome5 name={"plus-circle"} size={50} color={colors.green} />
         <Text style={styles.title}>Ingresos</Text>
-        <Button onPress={() => setShow(true)} title="Elegir Fecha" />
-        {show && (
-          <DateTimePicker
-            testID="dateTimePicker"
-            value={new Date(1598051730000)}
-            mode={"date"}
-            is24Hour={true}
-            display="default"
-            onChange={(e, date) => console.log(e, date)}
-          />
-        )}
       </View>
       <View style={styles.listView}>
+        {Platform.OS === "android" ? (
+          <View style={styles.dateViewAndroid}>
+            <Button
+              title={"Fecha"}
+              onPress={() => {
+                setShow(true);
+              }}
+              color={colors.green}
+            />
+            <Text style={styles.title}>
+              {date.getDate() +
+                "-" +
+                date.getMonth() +
+                "-" +
+                date.getFullYear()}
+            </Text>
+            {show && (
+              <DateTimePicker
+                value={date}
+                display="default"
+                onChange={onChange}
+                textColor={colors.green}
+                onTouchCancel={() => setShow(false)}
+              />
+            )}
+          </View>
+        ) : (
+          <View style={{ marginStart: 25, marginBottom: 20 }}>
+            <DateTimePicker
+              value={date}
+              display="default"
+              onChange={onChange}
+              textColor={colors.green}
+            />
+          </View>
+        )}
         <VirtualizedList
           style={styles.list}
           data={filtredList}
           initialNumToRender={10}
-          renderItem={({ item }) => <Item date={item.date} />}
+          renderItem={({ item }) => <Item date={item.id} />}
           getItemCount={getItemCount}
           getItem={getItem}
         />
@@ -104,6 +115,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     flex: 1,
   },
+  dateViewAndroid: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+    justifyContent: "space-between",
+    marginHorizontal: 30,
+  },
   title: {
     color: colors.green,
     fontWeight: "bold",
@@ -123,7 +141,7 @@ const styles = StyleSheet.create({
     marginStart: 10,
   },
   listView: {
-    flex: 4,
+    flex: 5,
   },
   row: {
     flexDirection: "row",

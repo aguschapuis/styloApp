@@ -33,49 +33,64 @@
   ],
   "ingresos": [
     {
-      "12-08-21": [
-        { "jabon": 15 },
-        { "Burbujero": 5 },
-        { "Pintura": 3 },
-        { "Esmalte": 8 },
-        { "Alcohol": 10 }
-      ]
+      "Sstilo-E1": {
+        "date": "2021-01-17T03:24:00",
+        "items": [
+          { "jabon": 15 },
+          { "Burbujero": 5 },
+          { "Pintura": 3 },
+          { "Esmalte": 8 },
+          { "Alcohol": 10 }
+        ]
+      }
     },
     {
-      "15-08-21": [
-        { "jabon": 15 },
-        { "Burbujero": 5 },
-        { "Pintura": 3 },
-        { "Esmalte": 8 },
-        { "Alcohol": 10 }
-      ]
+      "Sstilo-E2": {
+        "date": "2021-02-17T03:24:00",
+        "items": [
+          { "jabon": 15 },
+          { "Burbujero": 5 },
+          { "Pintura": 3 },
+          { "Esmalte": 8 },
+          { "Alcohol": 10 }
+        ]
+      }
     },
     {
-      "18-08-21": [
-        { "jabon": 15 },
-        { "Burbujero": 5 },
-        { "Pintura": 3 },
-        { "Esmalte": 8 },
-        { "Alcohol": 10 }
-      ]
+      "Sstilo-E3": {
+        "date": "2021-03-17T03:24:00",
+        "items": [
+          { "jabon": 15 },
+          { "Burbujero": 5 },
+          { "Pintura": 3 },
+          { "Esmalte": 8 },
+          { "Alcohol": 10 }
+        ]
+      }
     },
     {
-      "12-07-21": [
-        { "jabon": 15 },
-        { "Burbujero": 5 },
-        { "Pintura": 3 },
-        { "Esmalte": 8 },
-        { "Alcohol": 10 }
-      ]
+      "Sstilo-E4": {
+        "date": "2021-04-17T03:24:00",
+        "items": [
+          { "jabon": 15 },
+          { "Burbujero": 5 },
+          { "Pintura": 3 },
+          { "Esmalte": 8 },
+          { "Alcohol": 10 }
+        ]
+      }
     },
     {
-      "1-07-21": [
-        { "jabon": 15 },
-        { "Burbujero": 5 },
-        { "Pintura": 3 },
-        { "Esmalte": 8 },
-        { "Alcohol": 10 }
-      ]
+      "Sstilo-E5": {
+        "date": "2021-04-17T03:24:00",
+        "items": [
+          { "jabon": 15 },
+          { "Burbujero": 5 },
+          { "Pintura": 3 },
+          { "Esmalte": 8 },
+          { "Alcohol": 10 }
+        ]
+      }
     }
   ]
 }

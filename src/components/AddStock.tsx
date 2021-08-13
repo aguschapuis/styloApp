@@ -49,7 +49,7 @@ export const AddStock = () => {
   return (
     <SafeAreaView style={styles.stockView}>
       <View style={styles.iconView}>
-        <FontAwesome5 name={"plus-circle"} size={50} color={colors.green} />
+        <FontAwesome5 name={"plus"} size={50} color={colors.green} />
         <Text style={styles.title}>Ingresos</Text>
       </View>
       <View style={styles.listView}>

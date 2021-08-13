@@ -1,5 +1,5 @@
 export const iconNames = {
   boxOpen: "box-open",
-  addCircle: "plus-circle",
+  addCircle: "plus",
   paperPlane: "paper-plane",
 };
